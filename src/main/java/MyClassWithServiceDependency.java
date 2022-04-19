@@ -10,13 +10,13 @@ public class MyClassWithServiceDependency {
         this.myService = myService;
     }
 
-    public int checkMaxValueFromIntArray(List<Integer> myArray) throws NoSuchElementException {
+    public int checkMaxValueFromIntArray(List<Integer> myArray) throws Exception {
         System.out.println("Max value is: " + myService.computeMax(myArray));
         this.maxResult = myService.computeMax(myArray);
         return maxResult;
     }
 
-    public int checkMinValueFromIntArray(List<Integer> myArray) throws NoSuchElementException {
+    public int checkMinValueFromIntArray(List<Integer> myArray) throws Exception {
         System.out.println("Min value is: " + myService.computeMin(myArray));
         this.minResult = myService.computeMin(myArray);
         return minResult;

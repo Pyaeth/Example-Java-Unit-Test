@@ -1,3 +1,4 @@
+import model.Person;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,15 +15,16 @@ public class MyClassWithServiceDependencyTestNoMock {
     private MyService myService;
 
     private static final List<Integer> MY_TEST_LIST = Arrays.asList(5, 2, 4, -1);
+    private static final Person PERSON = new Person("test first name", "test last name", true);
 
     @Before
     public void init() {         //this method is called before every unit test
         //mock dependency with mockito
-        myService = new MyService();
+        myService = new MyService(PERSON);
     }
 
     @Test
-    public void checkMaxValue() {
+    public void checkMaxValue() throws Exception {
         //init sut
         sut = new MyClassWithServiceDependency(myService);
         //call method to be tested
@@ -32,7 +34,7 @@ public class MyClassWithServiceDependencyTestNoMock {
     }
 
     @Test
-    public void checkMinValue() {
+    public void checkMinValue() throws Exception {
         //init sut
         sut = new MyClassWithServiceDependency(myService);
         //call method to be tested

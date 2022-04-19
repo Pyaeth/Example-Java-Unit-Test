@@ -1,3 +1,5 @@
+import model.Person;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,8 +45,14 @@ public class MyClass {
         }
 
         //Example 2: class with 1 service as a dependency (dependency injection)
-        MyClassWithServiceDependency exampleWithDependency = new MyClassWithServiceDependency(new MyService());
+        Person myPerson = new Person("John", "Doe", true);
+        MyClassWithServiceDependency exampleWithDependency = new MyClassWithServiceDependency(new MyService(myPerson));
         List<Integer> myList = Arrays.asList(-1, 5, 0, 2, -7, 15, 10001, -22, -14, 10);
-        exampleWithDependency.checkMaxValueFromIntArray(myList);
+        try {
+            exampleWithDependency.checkMaxValueFromIntArray(myList);
+            exampleWithDependency.checkMinValueFromIntArray(myList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
